@@ -23,6 +23,8 @@ async function handleUpdateProfileRequest() {
         email: document.getElementById('input-email').value, 
         interests: document.getElementById('input-interests').value
     };
+
+    console.log(`Payload: ${JSON.stringify(payload)}`);
     
     const response = await fetch('http://localhost:3000/update-profile', {
         method: "POST",
@@ -30,7 +32,7 @@ async function handleUpdateProfileRequest() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
     });
     const jsonResponse = await response.json();
 
