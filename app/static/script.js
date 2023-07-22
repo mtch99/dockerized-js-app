@@ -1,4 +1,8 @@
-(async function init() {
+(function init() {
+    initProfile()
+})();
+
+async function initProfile(){
     const response = await fetch('http://localhost:3000/get-profile');
     console.log("response", response);
     const user = await response.json();
@@ -10,7 +14,7 @@
 
     const cont = document.getElementById('container');
     cont.style.display = 'block';
-})();
+}
 
 
 
@@ -36,6 +40,13 @@ async function handleUpdateProfileRequest() {
     });
     const jsonResponse = await response.json();
 
+    if(!response.ok){
+        console.log("Response not okay")
+        return
+    }
+
+    
+
     document.getElementById('name').textContent = jsonResponse.name;
     document.getElementById('email').textContent = jsonResponse.email;
     document.getElementById('interests').textContent = jsonResponse.interests;
@@ -43,6 +54,7 @@ async function handleUpdateProfileRequest() {
     cont.style.display = 'block';
     contEdit.style.display = 'none';
 }
+
 
 function updateProfile() {
     const contEdit = document.getElementById('container-edit');
