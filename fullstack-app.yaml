@@ -13,7 +13,7 @@ services:
   frontend:
     extends: 
       file: 'frontend-service.yaml'
-      service: 'app'
+      service: 'frontend'
 
 volumes: 
   mongo-data:
