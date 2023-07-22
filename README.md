@@ -75,7 +75,7 @@ Step 2: access the nodejs application from browser
 
 
 #### To build a docker image from the front end application
-    docker build -f docker .       
+    docker build -f frontend-service.yaml .       
 
 #### To build a docker image from the back end application
-    docker build -t 
+    docker build -f backend-service.yaml .       
