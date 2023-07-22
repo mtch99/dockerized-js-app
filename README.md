@@ -1,10 +1,6 @@
 ## demo app - developing with Docker
 
-This simple app shows a user profile app 
-It was set up using 
-- index.html with pure js and css styles
-- nodejs backend with express module
-- mongodb for data storage
+This simple app shows and update a user profile app 
 
 All components are docker-based
 
@@ -33,42 +29,53 @@ Step 4: open mongo-express from browser
 
 Step 5: create `user-account` _db_ and `users` _collection_ in mongo-express
 
-Step 6: Start your nodejs application locally - go to `app` directory of project 
+Step 6: Start your nodejs application 
+- locally:
+    $cd app
+    $npm install 
+    $node server.js --localhost or $npm run start
 
-    cd app
-    npm install 
-    node server.js
+- in a container:
+    docker build -f frontend.Dockerfile .
+
     
 Step 7: Access you nodejs application UI from browser
-
     http://localhost:3000
 
 ### With Docker Compose
 
 #### To start the application
 
-Step 1: start mongodb and mongo-express
+- Running the server locally
 
-    docker-compose -f docker-compose.yaml up
+Step 1: build the backend containers
+    docker-compose -f backend-service.yaml up
     
 _You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: in mongo-express UI - create a new database "user-account"
+        
+Step 2: start node server 
+    $cd app
+    $npm install
+    $node server.js
 
-Step 3: in mongo-express UI - create a new collection "users" in the database "user-account"       
-    
-Step 4: start node server 
-
-    cd app
-    npm install
-    node server.js
-    
-Step 5: access the nodejs application from browser 
-
+Step 3: access the nodejs application from browser 
     http://localhost:3000
 
-#### To build a docker image from the application
 
-    docker build -t my-app:1.0 .       
-    
-The dot "." at the end of the command denotes location of the Dockerfile.
+
+- Running the server from a container
+
+Step1: Build the backend and frontend containers
+    docker-compose -f fullstack-app.yaml up
+
+_You can access the mongo-express under localhost:8080 from your browser_
+
+Step 2: access the nodejs application from browser 
+    http://localhost:3000
+
+
+#### To build a docker image from the front end application
+    docker build -f docker .       
+
+#### To build a docker image from the back end application
+    docker build -t 
