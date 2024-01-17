@@ -1,10 +1,9 @@
 ## demo app - developing with Docker
 
-This simple app shows and update a user profile app 
+This simple app allows to display and update a user profile
 
 All components are docker-based
 
-This is my first time dockerizing a javascript application
 ### With Docker
 
 #### To start the application
